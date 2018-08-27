@@ -134,7 +134,7 @@ def on_intent(intent_request, session):
 
     for intent in INTENT_DATABASE.keys():
         if intent_name == intent:
-            return text(INTENT_DATABASE["intent"]())
+            return text(INTENT_DATABASE[intent]())
 
     if intent_name == "CancelIntent" or intent_name == "Cancel" or intent_name == "AMAZON.CancelIntent" or intent_name == "StopIntent" or intent_name == "Stop" or intent_name == "AMAZON.StopIntent":
         return stop(intent, session)

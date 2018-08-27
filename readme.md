@@ -12,9 +12,9 @@ For our example skill, we are going to be building a really simple Alexa skill w
 
 ### Overview
 Here's a brief overview of the steps needed to create a functioning Alexa Skill:
-0. Thinking and planning the Alexa Skill. [↵]()
-1. Creating a new Alexa Skill on [Amazon Developer Alexa](https://developer.amazon.com/alexa). [↵]()
-2. Adding an [invocation name](https://developer.amazon.com/docs/custom-skills/choose-the-invocation-name-for-a-custom-skill.html), [intents](https://developer.amazon.com/docs/custom-skills/create-intents-utterances-and-slots.html) and [sample utterances](https://developer.amazon.com/docs/custom-skills/create-intents-utterances-and-slots.html). [↵]()
+0. Thinking and planning the Alexa Skill. [↵](#0-thinking-and-planning)
+1. Creating a new Alexa Skill on [Amazon Developer Alexa](https://developer.amazon.com/alexa). [↵](#1-creating-the-alexa-skill-on-amazon-developer-alexa)
+2. Adding an [invocation name](https://developer.amazon.com/docs/custom-skills/choose-the-invocation-name-for-a-custom-skill.html), [intents](https://developer.amazon.com/docs/custom-skills/create-intents-utterances-and-slots.html) and [sample utterances](https://developer.amazon.com/docs/custom-skills/create-intents-utterances-and-slots.html). [↵](#1-invocation-intents-and-sample-utterances)
 3. Setting up a Python lambda function on [Amazon Lambda](https://console.aws.amazon.com/lambda/). [↵]()
 4. Linking the Alexa Skill to the Amazon Lambda function. [↵]()
 5. Programming the Alexa Skill. [↵]()
@@ -51,19 +51,19 @@ I would advise writing these example phrases down somewhere, so we can reference
 If you already have an Amazon Developer account, just [skip to the second part](#creating-the-skill).
 The account creation system is pretty straightforward, and if you can program in Python, then you most likely know how to set up an account. However, here are the steps:
 
-1. First, we need to go to [https://developer.amazon.com/](https://developer.amazon.com/). When you get there, a page that looks like this should appear:<br>
+1. First, we need to go to [https://developer.amazon.com/](https://developer.amazon.com/). When you get there, a page that looks like this should appear:<br><br>
 ![The Amazon Developer homepage](/readme_source/amazon-dev-homepage.png)
 
-2. Next, we click on "Sign In" on the top bar. If you have a smaller screen, it might be located in the "hamburger" (yes, that's a technical term) on the left. <br>
+2. Next, we click on "Sign In" on the top bar. If you have a smaller screen, it might be located in the "hamburger" (yes, that's a technical term) on the left. <br><br>
 ![Where the sign in button is. Really? Do I really need to explain this?](/readme_source/amazon-dev-homepage-sign-in.png)
 
-3. Clicking this should bring us to a page that looks like this<br>
+3. Clicking this should bring us to a page that looks like this<br><br>
 !["Sign in" page](/readme_source/amazon-dev-homepage-button.png)
 
-4. Click on the grey "Create your Amazon Developer account" beneath the golden "Sign In" button. That brings you to this page:<br>
+4. Click on the grey "Create your Amazon Developer account" beneath the golden "Sign In" button. That brings you to this page:<br><br>
 ![](readme_source/amazon-dev-homepage-details.png)
 
-5. Fill in your details and then go ahead and click on the "Create your Amazon Developer account", which is now gold. That will bring you to another page where you have to fill in yet more information.<br>
+5. Fill in your details and then go ahead and click on the "Create your Amazon Developer account", which is now gold. That will bring you to another page where you have to fill in yet more information.<br><br>
 
 ![](readme_source/amazon-dev-more-info.png)
 
@@ -71,37 +71,59 @@ The account creation system is pretty straightforward, and if you can program in
 
 7. It will then come up with a user agreement, which you should thoroughly read and annotate (I'm joking, don't do that). Just scroll to the bottom and hit "Accept and Continue".
 
-8. It will then come up with a page asking about payment information. Tick both of the boxes "no" and press the "Save and Continue" button, unless you do plan to do either of those things. If you do tick "yes", you're on your own from here.
+8. It will then come up with a page asking about payment information. Tick both of the boxes "no" and press the "Save and Continue" button, unless you do plan to do either of those things. If you do tick "yes", you're on your own from here.<br><br>
 
 ![](readme_source/amazon-dev-payments.png)
 
-9. We've finally set up our account. We should've arrived at a page that looks like this:
+9. We've finally set up our account. We should've arrived at a page that looks like this:<br><br>
 
 ![](readme_source/amazon-dev-home.png)
 
 #### Creating the skill
-Now we've set up our account, we need to actually create the skill. Remember the page from above ([https://developer.amazon.com/home.html](https://developer.amazon.com/home.html)):
+Now we've set up our account, we need to actually create the skill. Remember the page from above ([https://developer.amazon.com/home.html](https://developer.amazon.com/home.html)):<br><br>
 
 ![](readme_source/amazon-dev-home.png)
 
-Well, now we need to click on "ALEXA SKILLS KIT" on the second to top grey bar:
+1. Well, now we need to click on "ALEXA SKILLS KIT" on the second to top grey bar:<br><br>
 
 ![](readme_source/creating-skill/top-bar-alexa-skills-kit.png)
 
-This should bring us to another page. On this page, we need to click "Create Skill", a blue button roughly halfway down the page:
+2. This should bring us to another page. On this page, we need to click "Create Skill", a blue button roughly halfway down the page:
 
-![](readme_source/creating-skill/create-skill.png)
+![](readme_source/creating-skill/create-skill.png)<br><br>
 
-Now this page should appear:
+3. Now this page should appear:
 
-![](readme_source/creating-skill/name-skill.png)
+![](readme_source/creating-skill/name-skill.png)<br><br>
 
-**Important:** Now you need to type in your skill's name. At this stage, what you type won't affect what it will be called by Alexa, but structure and consistency is important. I'm going to call it "Haiku Generator"
+4. **Important:** Now you need to type in your skill's name. At this stage, what you type won't affect what it will be called by Alexa, but structure and consistency is important. I'm going to call it "Haiku Generator"<br><br>
 
 ![](readme_source/creating-skill/named-skill.png)
 
-Then, you have to click the blue "Next" button. This comes up with yet another page, which looks like so:
+5. Then, you have to click the blue "Next" button. This comes up with yet another page, which looks like so:<br><br>
 
 ![](readme_source/creating-skill/skill-type.png)
 
-For this Alexa skill and for using the `alexa-skill-starter-kit`, we need to select "Custom". This is done by clicking the blue "Select" button underneath "Custom". A flag in the corner of the box should come up saying "Selected", and we then press "Create Skill" in the top-right corner.
+6. For our Alexa skill, we need to select the option that says "Custom". This can be done by clicking the "Select" button underneath "Custom" (labelled **1**):<br><br>
+
+![](readme_source/creating-skill/skill-type-selected.png)
+
+7. We now click "Create Skill" in the upper-right hand corner, labelled on the diagram as **2**, and we are ready to proceed to the next step.
+
+In case you're interested these are what functions the different skill types have:
+
+> Custom: Allows you to design a custom skill, without any pre-built features (what we're doing). Example: Haiku Generator, Pizza Topping generator.
+
+> Flash Briefing: Allows you to create a skill that can function as part of a news feed or a feed of information. Example: News Reader, Popular Tweets reader.
+
+> Smart Home: Allows you to create a skill that can change things in your home. Don't get excited, you need special equipment to do so.
+
+> Video: Provides a framework for getting video content.
+
+### 2. Invocation, intents and sample utterances
+Remember [Step 0](#0-thinking-and-planning)? Well we're going to need to use the information you thought of now. In this step, we create an invocation name, an intent and some sample utterances.
+
+Here are the definitions:
+- **Invocation Name**: The invocation name is what the user says to activate the skill. For example *"Alexa, ask* **invocation name** *to..."*
+- **Intent**: An intent is an action that somebody using the skill can ask for. For example, the intent of our Alexa skill (the Haiku Generator) is to generate Haikus. For example *Alexa, ask Haiku Generator to* **generate a haiku** *.*"
+- **Sample Utterances**: The sample utterances are what a user might say to trigger a defined intent. For example, *Alexa, ask Haiku Generator to generate a haiku.* is what a user might say when they want to generate a Haiku. You should've already thought of these in [Step 0](#0-thinking-and-planning). 
